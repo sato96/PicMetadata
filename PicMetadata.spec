@@ -1,8 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
 # Build with: pyinstaller PicMetadata.spec
 
-block_cipher = None
-
 a = Analysis(
     ['main.py'],
     pathex=[],
@@ -14,19 +12,21 @@ a = Analysis(
         ('translations/app_it.qm',      'translations'),
     ],
     hiddenimports=[
-        'PySide6.QtXml',   # richiesto da Qt internamente
+        'PySide6.QtXml',
+        'PySide6.QtCore',
+        'PySide6.QtGui',
+        'PySide6.QtWidgets',
+        'PySide6.QtPrintSupport',
+        'PIL._tkinter_finder',
     ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
     excludes=[],
-    win_no_prefer_redirects=False,
-    win_private_assemblies=False,
-    cipher=block_cipher,
     noarchive=False,
 )
 
-pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+pyz = PYZ(a.pure)
 
 exe = EXE(
     pyz,
@@ -54,4 +54,17 @@ coll = COLLECT(
     upx=True,
     upx_exclude=[],
     name='PicMetadata',
+)
+
+# Bundle .app per macOS — ignorato su Windows/Linux
+app = BUNDLE(
+    coll,
+    name='PicMetadata.app',
+    bundle_identifier='com.sato96.picmetadata',
+    info_plist={
+        'NSHighResolutionCapable': True,
+        'LSBackgroundOnly': False,
+        'CFBundleShortVersionString': '0.1.2',
+        'CFBundleName': 'PicMetadata',
+    },
 )

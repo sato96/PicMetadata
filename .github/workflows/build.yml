@@ -3,7 +3,7 @@ name: Build & Release
 on:
   push:
     tags:
-      - 'v*'          # si attiva solo quando pussi un tag tipo v0.2.0
+      - 'v*'          # si attiva solo quando pussi un tag tipo v0.1.2
 
 jobs:
   build:
@@ -12,13 +12,10 @@ jobs:
         include:
           - os: windows-latest
             artifact: PicMetadata-windows
-            ext: zip
           - os: macos-latest
             artifact: PicMetadata-macOS
-            ext: tar.gz
           - os: ubuntu-latest
             artifact: PicMetadata-linux
-            ext: tar.gz
 
     runs-on: ${{ matrix.os }}
 
@@ -34,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pyinstaller
+          pip install pyinstaller pyinstaller-hooks-contrib
 
       - name: Compile translations
         run: |
@@ -44,20 +41,67 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller PicMetadata.spec
 
+      # ── Packaging ────────────────────────────────────────────────────────────
+
       - name: Package (Windows)
         if: matrix.os == 'windows-latest'
         run: Compress-Archive -Path dist/PicMetadata -DestinationPath ${{ matrix.artifact }}.zip
         shell: pwsh
 
-      - name: Package (macOS/Linux)
-        if: matrix.os != 'windows-latest'
+      - name: Package (macOS)
+        if: matrix.os == 'macos-latest'
+        run: tar -czf ${{ matrix.artifact }}.tar.gz -C dist PicMetadata.app
+
+      - name: Package (Linux)
+        if: matrix.os == 'ubuntu-latest'
         run: tar -czf ${{ matrix.artifact }}.tar.gz -C dist PicMetadata
 
-      - name: Upload artifact
+      # ── Test rapido ──────────────────────────────────────────────────────────
+
+      - name: Test eseguibile (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          $proc = Start-Process -FilePath "dist/PicMetadata/PicMetadata.exe" -PassThru
+          Start-Sleep -Seconds 5
+          if ($proc.HasExited) {
+            Write-Error "L'app è crashata subito dopo l'avvio (exit code: $($proc.ExitCode))"
+            exit 1
+          }
+          $proc | Stop-Process
+          Write-Host "OK: l'app si è avviata correttamente su Windows"
+
+      - name: Test eseguibile (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get install -y xvfb
+          timeout 5 xvfb-run dist/PicMetadata/PicMetadata || true
+          echo "OK: l'app si è avviata correttamente su Linux"
+
+      # ── Upload artifact ──────────────────────────────────────────────────────
+
+      - name: Upload artifact (Windows)
+        if: matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact }}
-          path: ${{ matrix.artifact }}.*
+          path: ${{ matrix.artifact }}.zip
+
+      - name: Upload artifact (macOS)
+        if: matrix.os == 'macos-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}.tar.gz
+
+      - name: Upload artifact (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}.tar.gz
+
+  # ── Release ──────────────────────────────────────────────────────────────────
 
   release:
     needs: build
@@ -76,4 +120,4 @@ jobs:
             PicMetadata-windows/*.zip
             PicMetadata-macOS/*.tar.gz
             PicMetadata-linux/*.tar.gz
-          generate_release_notes: true  # genera automaticamente le note dalla diff
+          generate_release_notes: true

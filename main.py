@@ -1,14 +1,26 @@
 # main.py
 import sys
+import os
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import QTranslator, QLocale
 from controllers.main_controller import MainController
 
 
-def load_translator(app: QApplication, lang_code: str) -> QTranslator | None:
-    """Carica il file .qm per la lingua richiesta. Ritorna None se non trovato."""
+def get_base_path() -> str:
+    """
+    Restituisce il path base delle risorse.
+    - Se siamo dentro PyInstaller → usa _MEIPASS (cartella temporanea del bundle)
+    - Se siamo in sviluppo → usa la directory del progetto
+    """
+    if hasattr(sys, '_MEIPASS'):
+        return sys._MEIPASS          # path dentro il bundle PyInstaller
+    return os.path.dirname(os.path.abspath(__file__))  # path sviluppo
+
+
+def load_translator(app: QApplication, lang_code: str, base_path: str) -> QTranslator | None:
     translator = QTranslator()
-    if translator.load(f"translations/app_{lang_code}.qm"):
+    qm_path = os.path.join(base_path, "translations", f"app_{lang_code}.qm")
+    if translator.load(qm_path):
         app.installTranslator(translator)
         return translator
     return None
@@ -17,21 +29,15 @@ def load_translator(app: QApplication, lang_code: str) -> QTranslator | None:
 def main():
     app = QApplication(sys.argv)
 
-    # Lingua del sistema operativo (es. "it", "fr", "de", "ja")
+    base_path = get_base_path()
     system_lang = QLocale.system().name().split("_")[0]
 
-    translator = None
+    # Carica sempre l'inglese come base
+    load_translator(app, "en", base_path)
 
+    # Se il sistema non è inglese, prova a caricare la lingua locale
     if system_lang != "en":
-        # Prova a caricare la lingua del sistema
-        translator = load_translator(app, system_lang)
-
-        if translator is None:
-            # Lingua non disponibile → carica inglese come default
-            translator = load_translator(app, "en")
-    # Se system_lang == "en" non carichiamo nulla:
-    # il codice sorgente italiano viene sovrascritto dall'inglese? No —
-    # vedi nota sotto su come gestire questo
+        load_translator(app, system_lang, base_path)
 
     controller = MainController()
     controller.show()
