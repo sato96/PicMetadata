@@ -1,0 +1,79 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'          # si attiva solo quando pussi un tag tipo v0.2.0
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            artifact: PicMetadata-windows
+            ext: zip
+          - os: macos-latest
+            artifact: PicMetadata-macOS
+            ext: tar.gz
+          - os: ubuntu-latest
+            artifact: PicMetadata-linux
+            ext: tar.gz
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Compile translations
+        run: |
+          pyside6-lrelease translations/app_en.ts -qm translations/app_en.qm
+          pyside6-lrelease translations/app_it.ts -qm translations/app_it.qm
+
+      - name: Build with PyInstaller
+        run: pyinstaller PicMetadata.spec
+
+      - name: Package (Windows)
+        if: matrix.os == 'windows-latest'
+        run: Compress-Archive -Path dist/PicMetadata -DestinationPath ${{ matrix.artifact }}.zip
+        shell: pwsh
+
+      - name: Package (macOS/Linux)
+        if: matrix.os != 'windows-latest'
+        run: tar -czf ${{ matrix.artifact }}.tar.gz -C dist PicMetadata
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}.*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            PicMetadata-windows/*.zip
+            PicMetadata-macOS/*.tar.gz
+            PicMetadata-linux/*.tar.gz
+          generate_release_notes: true  # genera automaticamente le note dalla diff

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Build / distribuzione
+build/
+dist/
+*.egg-info/
+*.spec
+
+# PyInstaller output
+build/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Qt compilato (i .qm si rigenerano da .ts)
+translations/*.qm
