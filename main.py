@@ -28,16 +28,20 @@ def load_translator(app: QApplication, lang_code: str, base_path: str) -> QTrans
 
 def main():
     app = QApplication(sys.argv)
-
     base_path = get_base_path()
     system_lang = QLocale.system().name().split("_")[0]
 
-    # Carica sempre l'inglese come base
-    load_translator(app, "en", base_path)
+    # Tieni i riferimenti in una lista per evitare il garbage collector
+    translators = []
 
-    # Se il sistema non è inglese, prova a caricare la lingua locale
+    en_translator = load_translator(app, "en", base_path)
+    if en_translator:
+        translators.append(en_translator)
+
     if system_lang != "en":
-        load_translator(app, system_lang, base_path)
+        lang_translator = load_translator(app, system_lang, base_path)
+        if lang_translator:
+            translators.append(lang_translator)
 
     controller = MainController()
     controller.show()

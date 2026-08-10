@@ -74,7 +74,18 @@ class MainController(QMainWindow):
         self.ui.manualButton.clicked.connect(self.avvia_modalita_manuale)
         self.ui.singleImgButton.clicked.connect(self.avvia_singola_immagine)
         self.ui.hybridModeButton.clicked.connect(self.avvia_modalita_ibrida)
-        self.ui.actionSeleziona_cartella.triggered.connect(self.seleziona_cartella)
+        self.ui.actionCrediti.triggered.connect(self.credits)
+        self.ui.actionGuida.triggered.connect(self.guide)
+
+    def guide(self):
+        from PySide6.QtGui import QDesktopServices
+        from PySide6.QtCore import QUrl
+        QDesktopServices.openUrl(QUrl("https://github.com/sato96/PicMetadata"))
+
+    def credits(self):
+        from PySide6.QtGui import QDesktopServices
+        from PySide6.QtCore import QUrl
+        QDesktopServices.openUrl(QUrl("https://github.com/sato96"))
 
     # ── Folder ──────────────────────────────────────────────────────────────
     def seleziona_cartella(self):
