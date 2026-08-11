@@ -3,7 +3,7 @@ name: Build & Release
 on:
   push:
     tags:
-      - 'v*'          # si attiva solo quando pussi un tag tipo v0.1.2
+      - 'v*'
 
 jobs:
   build:

@@ -9,6 +9,8 @@ a = Analysis(
         ('ui/MainWindow.ui',            'ui'),
         ('ui/manual_date_dialog.ui',    'ui'),
         ('ui/resources/style.qss',      'ui/resources'),
+        ('ui/resources/style_dark.qss', 'ui/resources'),
+        ('ui/resources/icons',          'ui/resources/icons'),
         ('translations/app_en.qm',      'translations'),
         ('translations/app_it.qm',      'translations'),
     ],

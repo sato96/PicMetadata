@@ -4,7 +4,7 @@ build-backend = "setuptools.backends.legacy:build"
 
 [project]
 name = "PicMetadata"
-version = "0.2.0"
+version = "0.2.1"
 description = "A tool to fix and manage EXIF date metadata in image files"
 readme = "README.md"
 license = { file = "LICENSE" }
