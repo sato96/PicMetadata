@@ -107,8 +107,8 @@ class Ui_MainWindow(object):
         self.statsRow.setObjectName(u"statsRow")
         self.statCardImages = QFrame(self.centralwidget)
         self.statCardImages.setObjectName(u"statCardImages")
-        self.statCardImages.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardImages.setMinimumSize(QSize(0, 78))
+        self.statCardImages.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardImagesLayout = QVBoxLayout(self.statCardImages)
         self.statCardImagesLayout.setSpacing(4)
         self.statCardImagesLayout.setObjectName(u"statCardImagesLayout")
@@ -129,8 +129,8 @@ class Ui_MainWindow(object):
 
         self.statCardNoData = QFrame(self.centralwidget)
         self.statCardNoData.setObjectName(u"statCardNoData")
-        self.statCardNoData.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardNoData.setMinimumSize(QSize(0, 78))
+        self.statCardNoData.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardNoDataLayout = QVBoxLayout(self.statCardNoData)
         self.statCardNoDataLayout.setSpacing(4)
         self.statCardNoDataLayout.setObjectName(u"statCardNoDataLayout")
@@ -151,8 +151,8 @@ class Ui_MainWindow(object):
 
         self.statCardFixedAuto = QFrame(self.centralwidget)
         self.statCardFixedAuto.setObjectName(u"statCardFixedAuto")
-        self.statCardFixedAuto.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardFixedAuto.setMinimumSize(QSize(0, 78))
+        self.statCardFixedAuto.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardFixedAutoLayout = QVBoxLayout(self.statCardFixedAuto)
         self.statCardFixedAutoLayout.setSpacing(4)
         self.statCardFixedAutoLayout.setObjectName(u"statCardFixedAutoLayout")
@@ -173,8 +173,8 @@ class Ui_MainWindow(object):
 
         self.statCardFixedManual = QFrame(self.centralwidget)
         self.statCardFixedManual.setObjectName(u"statCardFixedManual")
-        self.statCardFixedManual.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardFixedManual.setMinimumSize(QSize(0, 78))
+        self.statCardFixedManual.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardFixedManualLayout = QVBoxLayout(self.statCardFixedManual)
         self.statCardFixedManualLayout.setSpacing(4)
         self.statCardFixedManualLayout.setObjectName(u"statCardFixedManualLayout")
@@ -195,8 +195,8 @@ class Ui_MainWindow(object):
 
         self.statCardSkipped = QFrame(self.centralwidget)
         self.statCardSkipped.setObjectName(u"statCardSkipped")
-        self.statCardSkipped.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardSkipped.setMinimumSize(QSize(0, 78))
+        self.statCardSkipped.setFrameShape(QFrame.Shape.NoFrame)
         self.statCardSkippedLayout = QVBoxLayout(self.statCardSkipped)
         self.statCardSkippedLayout.setSpacing(4)
         self.statCardSkippedLayout.setObjectName(u"statCardSkippedLayout")
@@ -226,12 +226,12 @@ class Ui_MainWindow(object):
         self.autoTileLayout.setObjectName(u"autoTileLayout")
         self.autoButton = QPushButton(self.centralwidget)
         self.autoButton.setObjectName(u"autoButton")
-        self.autoButton.setMinimumSize(QSize(0, 84))
         sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.autoButton.sizePolicy().hasHeightForWidth())
         self.autoButton.setSizePolicy(sizePolicy1)
+        self.autoButton.setMinimumSize(QSize(0, 84))
         self.autoButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.autoTileLayout.addWidget(self.autoButton)
@@ -250,9 +250,9 @@ class Ui_MainWindow(object):
         self.manualTileLayout.setObjectName(u"manualTileLayout")
         self.manualButton = QPushButton(self.centralwidget)
         self.manualButton.setObjectName(u"manualButton")
-        self.manualButton.setMinimumSize(QSize(0, 84))
         sizePolicy1.setHeightForWidth(self.manualButton.sizePolicy().hasHeightForWidth())
         self.manualButton.setSizePolicy(sizePolicy1)
+        self.manualButton.setMinimumSize(QSize(0, 84))
         self.manualButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.manualTileLayout.addWidget(self.manualButton)
@@ -271,9 +271,9 @@ class Ui_MainWindow(object):
         self.singleImgTileLayout.setObjectName(u"singleImgTileLayout")
         self.singleImgButton = QPushButton(self.centralwidget)
         self.singleImgButton.setObjectName(u"singleImgButton")
-        self.singleImgButton.setMinimumSize(QSize(0, 84))
         sizePolicy1.setHeightForWidth(self.singleImgButton.sizePolicy().hasHeightForWidth())
         self.singleImgButton.setSizePolicy(sizePolicy1)
+        self.singleImgButton.setMinimumSize(QSize(0, 84))
         self.singleImgButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.singleImgTileLayout.addWidget(self.singleImgButton)
@@ -292,9 +292,9 @@ class Ui_MainWindow(object):
         self.hybridTileLayout.setObjectName(u"hybridTileLayout")
         self.hybridModeButton = QPushButton(self.centralwidget)
         self.hybridModeButton.setObjectName(u"hybridModeButton")
-        self.hybridModeButton.setMinimumSize(QSize(0, 84))
         sizePolicy1.setHeightForWidth(self.hybridModeButton.sizePolicy().hasHeightForWidth())
         self.hybridModeButton.setSizePolicy(sizePolicy1)
+        self.hybridModeButton.setMinimumSize(QSize(0, 84))
         self.hybridModeButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.hybridTileLayout.addWidget(self.hybridModeButton)
@@ -338,7 +338,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"PhotoClock", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"PicMetadata", None))
         self.actionSeleziona_cartella.setText(QCoreApplication.translate("MainWindow", u"Select folder", None))
         self.actionGuida.setText(QCoreApplication.translate("MainWindow", u"Help", None))
         self.actionCrediti.setText(QCoreApplication.translate("MainWindow", u"Credits", None))

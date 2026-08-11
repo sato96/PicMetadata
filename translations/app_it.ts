@@ -56,23 +56,23 @@
     </message>
     <message>
         <source>Number of images</source>
-        <translation>Numero di immagini</translation>
+        <translation type="vanished">Numero di immagini</translation>
     </message>
     <message>
         <source>Images without a date</source>
-        <translation>Immagini senza data</translation>
+        <translation type="vanished">Immagini senza data</translation>
     </message>
     <message>
         <source>Fixed automatically</source>
-        <translation>Corrette automaticamente</translation>
+        <translation type="vanished">Corrette automaticamente</translation>
     </message>
     <message>
         <source>Fixed manually</source>
-        <translation>Corrette manualmente</translation>
+        <translation type="vanished">Corrette manualmente</translation>
     </message>
     <message>
         <source>Skipped</source>
-        <translation>Saltate</translation>
+        <translation type="vanished">Saltate</translation>
     </message>
     <message>
         <source>Value</source>
@@ -113,9 +113,13 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../ui/MainWindow.ui" line="23"/>
         <source>PhotoClock</source>
-        <translation>PhotoClock</translation>
+        <translation type="vanished">PhotoClock</translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="23"/>
+        <source>PicMetadata</source>
+        <translation>PicMetadata</translation>
     </message>
     <message>
         <location filename="../ui/MainWindow.ui" line="66"/>

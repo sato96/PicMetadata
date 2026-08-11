@@ -20,7 +20,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>PhotoClock</string>
+   <string>PicMetadata</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="mainLayout" stretch="0,0,1">
@@ -152,14 +152,14 @@
       </property>
       <item>
        <widget class="QFrame" name="statCardImages">
-        <property name="frameShape">
-         <enum>QFrame::Shape::NoFrame</enum>
-        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
           <height>78</height>
          </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::NoFrame</enum>
         </property>
         <property name="accent" stdset="0">
          <string>brand</string>
@@ -202,14 +202,14 @@
       </item>
       <item>
        <widget class="QFrame" name="statCardNoData">
-        <property name="frameShape">
-         <enum>QFrame::Shape::NoFrame</enum>
-        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
           <height>78</height>
          </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::NoFrame</enum>
         </property>
         <property name="accent" stdset="0">
          <string>warning</string>
@@ -252,14 +252,14 @@
       </item>
       <item>
        <widget class="QFrame" name="statCardFixedAuto">
-        <property name="frameShape">
-         <enum>QFrame::Shape::NoFrame</enum>
-        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
           <height>78</height>
          </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::NoFrame</enum>
         </property>
         <property name="accent" stdset="0">
          <string>success</string>
@@ -302,14 +302,14 @@
       </item>
       <item>
        <widget class="QFrame" name="statCardFixedManual">
-        <property name="frameShape">
-         <enum>QFrame::Shape::NoFrame</enum>
-        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
           <height>78</height>
          </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::NoFrame</enum>
         </property>
         <property name="accent" stdset="0">
          <string>info</string>
@@ -352,14 +352,14 @@
       </item>
       <item>
        <widget class="QFrame" name="statCardSkipped">
-        <property name="frameShape">
-         <enum>QFrame::Shape::NoFrame</enum>
-        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
           <height>78</height>
          </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Shape::NoFrame</enum>
         </property>
         <property name="accent" stdset="0">
          <string>neutral</string>
@@ -414,17 +414,17 @@
         </property>
         <item>
          <widget class="QPushButton" name="autoButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>84</height>
-           </size>
-          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>84</height>
+           </size>
           </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
@@ -453,17 +453,17 @@
         </property>
         <item>
          <widget class="QPushButton" name="manualButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>84</height>
-           </size>
-          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>84</height>
+           </size>
           </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
@@ -492,17 +492,17 @@
         </property>
         <item>
          <widget class="QPushButton" name="singleImgButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>84</height>
-           </size>
-          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>84</height>
+           </size>
           </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
@@ -531,17 +531,17 @@
         </property>
         <item>
          <widget class="QPushButton" name="hybridModeButton">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>84</height>
-           </size>
-          </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>84</height>
+           </size>
           </property>
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>

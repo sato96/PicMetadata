@@ -83,7 +83,7 @@
     <name>MainWindow</name>
     <message>
         <location filename="../ui/MainWindow.ui" line="23"/>
-        <source>PhotoClock</source>
+        <source>PicMetadata</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

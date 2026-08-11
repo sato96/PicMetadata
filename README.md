@@ -36,8 +36,7 @@ python main.py
 ```
 
 ### Standalone executable (no Python required)
-
-Download the latest release for your platform from the [Releases](https://github.com/YOUR_USERNAME/PicMetadata/releases) page:
+Download the latest release for your platform from the [Releases](https://github.com/sato96/PicMetadata/releases/latest) page:
 
 | Platform | File |
 |---|---|
