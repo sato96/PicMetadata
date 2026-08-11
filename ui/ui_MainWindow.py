@@ -16,18 +16,18 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QHBoxLayout, QHeaderView,
-    QLabel, QLayout, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
-    QStatusBar, QTableWidget, QTableWidgetItem, QToolButton,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
+    QLabel, QMainWindow, QMenu, QMenuBar,
+    QPushButton, QSizePolicy, QSpacerItem, QStatusBar,
+    QToolButton, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setWindowModality(Qt.WindowModality.NonModal)
-        MainWindow.resize(886, 480)
+        MainWindow.resize(980, 640)
+        MainWindow.setMinimumSize(QSize(760, 520))
         self.actionSeleziona_cartella = QAction(MainWindow)
         self.actionSeleziona_cartella.setObjectName(u"actionSeleziona_cartella")
         icon = QIcon(QIcon.fromTheme(QIcon.ThemeIcon.FolderNew))
@@ -41,15 +41,30 @@ class Ui_MainWindow(object):
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.mainLayout = QVBoxLayout(self.centralwidget)
-        self.mainLayout.setSpacing(16)
+        self.mainLayout.setSpacing(18)
         self.mainLayout.setObjectName(u"mainLayout")
-        self.mainLayout.setContentsMargins(20, 20, 20, 20)
-        self.gridLayout_2 = QGridLayout()
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setSizeConstraint(QLayout.SizeConstraint.SetMaximumSize)
-        self.folderPathName = QLabel(self.centralwidget)
+        self.mainLayout.setContentsMargins(24, 20, 24, 24)
+        self.headerCard = QFrame(self.centralwidget)
+        self.headerCard.setObjectName(u"headerCard")
+        self.headerCard.setFrameShape(QFrame.Shape.NoFrame)
+        self.headerCardLayout = QHBoxLayout(self.headerCard)
+        self.headerCardLayout.setSpacing(14)
+        self.headerCardLayout.setObjectName(u"headerCardLayout")
+        self.headerCardLayout.setContentsMargins(18, 14, 18, 14)
+        self.folderIconLabel = QLabel(self.headerCard)
+        self.folderIconLabel.setObjectName(u"folderIconLabel")
+
+        self.headerCardLayout.addWidget(self.folderIconLabel)
+
+        self.folderTextLayout = QVBoxLayout()
+        self.folderTextLayout.setSpacing(2)
+        self.folderTextLayout.setObjectName(u"folderTextLayout")
+        self.folderCaption = QLabel(self.headerCard)
+        self.folderCaption.setObjectName(u"folderCaption")
+
+        self.folderTextLayout.addWidget(self.folderCaption)
+
+        self.folderPathName = QLabel(self.headerCard)
         self.folderPathName.setObjectName(u"folderPathName")
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(1)
@@ -58,134 +73,249 @@ class Ui_MainWindow(object):
         self.folderPathName.setSizePolicy(sizePolicy)
         self.folderPathName.setWordWrap(True)
 
-        self.verticalLayout.addWidget(self.folderPathName)
+        self.folderTextLayout.addWidget(self.folderPathName)
 
-        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.verticalLayout.addItem(self.verticalSpacer_5)
+        self.headerCardLayout.addLayout(self.folderTextLayout)
 
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.changeFolderButton = QToolButton(self.centralwidget)
+        self.headerSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.headerCardLayout.addItem(self.headerSpacer)
+
+        self.changeFolderButton = QToolButton(self.headerCard)
         self.changeFolderButton.setObjectName(u"changeFolderButton")
-        sizePolicy.setHeightForWidth(self.changeFolderButton.sizePolicy().hasHeightForWidth())
-        self.changeFolderButton.setSizePolicy(sizePolicy)
         self.changeFolderButton.setIcon(icon)
         self.changeFolderButton.setAutoRepeatDelay(100)
         self.changeFolderButton.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
         self.changeFolderButton.setArrowType(Qt.ArrowType.NoArrow)
 
-        self.horizontalLayout.addWidget(self.changeFolderButton)
+        self.headerCardLayout.addWidget(self.changeFolderButton)
 
-        self.updateDataButton = QToolButton(self.centralwidget)
+        self.updateDataButton = QToolButton(self.headerCard)
         self.updateDataButton.setObjectName(u"updateDataButton")
-        sizePolicy.setHeightForWidth(self.updateDataButton.sizePolicy().hasHeightForWidth())
-        self.updateDataButton.setSizePolicy(sizePolicy)
         icon2 = QIcon(QIcon.fromTheme(QIcon.ThemeIcon.ViewRefresh))
         self.updateDataButton.setIcon(icon2)
         self.updateDataButton.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
 
-        self.horizontalLayout.addWidget(self.updateDataButton)
+        self.headerCardLayout.addWidget(self.updateDataButton)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.mainLayout.addWidget(self.headerCard)
 
-        self.verticalSpacer_top = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.MinimumExpanding)
+        self.statsRow = QHBoxLayout()
+        self.statsRow.setSpacing(14)
+        self.statsRow.setObjectName(u"statsRow")
+        self.statCardImages = QFrame(self.centralwidget)
+        self.statCardImages.setObjectName(u"statCardImages")
+        self.statCardImages.setFrameShape(QFrame.Shape.NoFrame)
+        self.statCardImages.setMinimumSize(QSize(0, 78))
+        self.statCardImagesLayout = QVBoxLayout(self.statCardImages)
+        self.statCardImagesLayout.setSpacing(4)
+        self.statCardImagesLayout.setObjectName(u"statCardImagesLayout")
+        self.statCardImagesLayout.setContentsMargins(16, 12, 16, 12)
+        self.statValueImages = QLabel(self.statCardImages)
+        self.statValueImages.setObjectName(u"statValueImages")
 
-        self.verticalLayout.addItem(self.verticalSpacer_top)
+        self.statCardImagesLayout.addWidget(self.statValueImages)
 
-        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.statCaptionImages = QLabel(self.statCardImages)
+        self.statCaptionImages.setObjectName(u"statCaptionImages")
+        self.statCaptionImages.setWordWrap(True)
 
-        self.verticalLayout.addItem(self.verticalSpacer_6)
-
-
-        self.gridLayout_2.addLayout(self.verticalLayout, 0, 1, 1, 1)
-
-        self.statusTable = QTableWidget(self.centralwidget)
-        self.statusTable.setObjectName(u"statusTable")
-        self.statusTable.setEnabled(True)
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
-        sizePolicy1.setHorizontalStretch(1)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.statusTable.sizePolicy().hasHeightForWidth())
-        self.statusTable.setSizePolicy(sizePolicy1)
-        self.statusTable.setAutoFillBackground(True)
-        self.statusTable.setMidLineWidth(7)
-        self.statusTable.setGridStyle(Qt.PenStyle.SolidLine)
-        self.statusTable.setCornerButtonEnabled(False)
-        self.statusTable.horizontalHeader().setVisible(True)
-        self.statusTable.horizontalHeader().setCascadingSectionResizes(True)
-        self.statusTable.horizontalHeader().setMinimumSectionSize(46)
-        self.statusTable.horizontalHeader().setProperty(u"showSortIndicator", False)
-        self.statusTable.horizontalHeader().setStretchLastSection(True)
-        self.statusTable.verticalHeader().setStretchLastSection(False)
-
-        self.gridLayout_2.addWidget(self.statusTable, 0, 2, 1, 1)
-
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_2.addItem(self.horizontalSpacer_2, 0, 0, 1, 1)
+        self.statCardImagesLayout.addWidget(self.statCaptionImages)
 
 
-        self.mainLayout.addLayout(self.gridLayout_2)
+        self.statsRow.addWidget(self.statCardImages)
+
+        self.statCardNoData = QFrame(self.centralwidget)
+        self.statCardNoData.setObjectName(u"statCardNoData")
+        self.statCardNoData.setFrameShape(QFrame.Shape.NoFrame)
+        self.statCardNoData.setMinimumSize(QSize(0, 78))
+        self.statCardNoDataLayout = QVBoxLayout(self.statCardNoData)
+        self.statCardNoDataLayout.setSpacing(4)
+        self.statCardNoDataLayout.setObjectName(u"statCardNoDataLayout")
+        self.statCardNoDataLayout.setContentsMargins(16, 12, 16, 12)
+        self.statValueNoData = QLabel(self.statCardNoData)
+        self.statValueNoData.setObjectName(u"statValueNoData")
+
+        self.statCardNoDataLayout.addWidget(self.statValueNoData)
+
+        self.statCaptionNoData = QLabel(self.statCardNoData)
+        self.statCaptionNoData.setObjectName(u"statCaptionNoData")
+        self.statCaptionNoData.setWordWrap(True)
+
+        self.statCardNoDataLayout.addWidget(self.statCaptionNoData)
+
+
+        self.statsRow.addWidget(self.statCardNoData)
+
+        self.statCardFixedAuto = QFrame(self.centralwidget)
+        self.statCardFixedAuto.setObjectName(u"statCardFixedAuto")
+        self.statCardFixedAuto.setFrameShape(QFrame.Shape.NoFrame)
+        self.statCardFixedAuto.setMinimumSize(QSize(0, 78))
+        self.statCardFixedAutoLayout = QVBoxLayout(self.statCardFixedAuto)
+        self.statCardFixedAutoLayout.setSpacing(4)
+        self.statCardFixedAutoLayout.setObjectName(u"statCardFixedAutoLayout")
+        self.statCardFixedAutoLayout.setContentsMargins(16, 12, 16, 12)
+        self.statValueFixedAuto = QLabel(self.statCardFixedAuto)
+        self.statValueFixedAuto.setObjectName(u"statValueFixedAuto")
+
+        self.statCardFixedAutoLayout.addWidget(self.statValueFixedAuto)
+
+        self.statCaptionFixedAuto = QLabel(self.statCardFixedAuto)
+        self.statCaptionFixedAuto.setObjectName(u"statCaptionFixedAuto")
+        self.statCaptionFixedAuto.setWordWrap(True)
+
+        self.statCardFixedAutoLayout.addWidget(self.statCaptionFixedAuto)
+
+
+        self.statsRow.addWidget(self.statCardFixedAuto)
+
+        self.statCardFixedManual = QFrame(self.centralwidget)
+        self.statCardFixedManual.setObjectName(u"statCardFixedManual")
+        self.statCardFixedManual.setFrameShape(QFrame.Shape.NoFrame)
+        self.statCardFixedManual.setMinimumSize(QSize(0, 78))
+        self.statCardFixedManualLayout = QVBoxLayout(self.statCardFixedManual)
+        self.statCardFixedManualLayout.setSpacing(4)
+        self.statCardFixedManualLayout.setObjectName(u"statCardFixedManualLayout")
+        self.statCardFixedManualLayout.setContentsMargins(16, 12, 16, 12)
+        self.statValueFixedManual = QLabel(self.statCardFixedManual)
+        self.statValueFixedManual.setObjectName(u"statValueFixedManual")
+
+        self.statCardFixedManualLayout.addWidget(self.statValueFixedManual)
+
+        self.statCaptionFixedManual = QLabel(self.statCardFixedManual)
+        self.statCaptionFixedManual.setObjectName(u"statCaptionFixedManual")
+        self.statCaptionFixedManual.setWordWrap(True)
+
+        self.statCardFixedManualLayout.addWidget(self.statCaptionFixedManual)
+
+
+        self.statsRow.addWidget(self.statCardFixedManual)
+
+        self.statCardSkipped = QFrame(self.centralwidget)
+        self.statCardSkipped.setObjectName(u"statCardSkipped")
+        self.statCardSkipped.setFrameShape(QFrame.Shape.NoFrame)
+        self.statCardSkipped.setMinimumSize(QSize(0, 78))
+        self.statCardSkippedLayout = QVBoxLayout(self.statCardSkipped)
+        self.statCardSkippedLayout.setSpacing(4)
+        self.statCardSkippedLayout.setObjectName(u"statCardSkippedLayout")
+        self.statCardSkippedLayout.setContentsMargins(16, 12, 16, 12)
+        self.statValueSkipped = QLabel(self.statCardSkipped)
+        self.statValueSkipped.setObjectName(u"statValueSkipped")
+
+        self.statCardSkippedLayout.addWidget(self.statValueSkipped)
+
+        self.statCaptionSkipped = QLabel(self.statCardSkipped)
+        self.statCaptionSkipped.setObjectName(u"statCaptionSkipped")
+        self.statCaptionSkipped.setWordWrap(True)
+
+        self.statCardSkippedLayout.addWidget(self.statCaptionSkipped)
+
+
+        self.statsRow.addWidget(self.statCardSkipped)
+
+
+        self.mainLayout.addLayout(self.statsRow)
 
         self.modesLayout = QGridLayout()
-        self.modesLayout.setSpacing(6)
+        self.modesLayout.setSpacing(14)
         self.modesLayout.setObjectName(u"modesLayout")
+        self.autoTileLayout = QVBoxLayout()
+        self.autoTileLayout.setSpacing(6)
+        self.autoTileLayout.setObjectName(u"autoTileLayout")
         self.autoButton = QPushButton(self.centralwidget)
         self.autoButton.setObjectName(u"autoButton")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.autoButton.sizePolicy().hasHeightForWidth())
-        self.autoButton.setSizePolicy(sizePolicy2)
+        self.autoButton.setMinimumSize(QSize(0, 84))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.autoButton.sizePolicy().hasHeightForWidth())
+        self.autoButton.setSizePolicy(sizePolicy1)
+        self.autoButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
-        self.modesLayout.addWidget(self.autoButton, 0, 0, 1, 1)
+        self.autoTileLayout.addWidget(self.autoButton)
 
+        self.autoCaption = QLabel(self.centralwidget)
+        self.autoCaption.setObjectName(u"autoCaption")
+        self.autoCaption.setWordWrap(True)
+
+        self.autoTileLayout.addWidget(self.autoCaption)
+
+
+        self.modesLayout.addLayout(self.autoTileLayout, 0, 0, 1, 1)
+
+        self.manualTileLayout = QVBoxLayout()
+        self.manualTileLayout.setSpacing(6)
+        self.manualTileLayout.setObjectName(u"manualTileLayout")
         self.manualButton = QPushButton(self.centralwidget)
         self.manualButton.setObjectName(u"manualButton")
-        sizePolicy2.setHeightForWidth(self.manualButton.sizePolicy().hasHeightForWidth())
-        self.manualButton.setSizePolicy(sizePolicy2)
+        self.manualButton.setMinimumSize(QSize(0, 84))
+        sizePolicy1.setHeightForWidth(self.manualButton.sizePolicy().hasHeightForWidth())
+        self.manualButton.setSizePolicy(sizePolicy1)
+        self.manualButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
-        self.modesLayout.addWidget(self.manualButton, 0, 1, 1, 1)
+        self.manualTileLayout.addWidget(self.manualButton)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.MinimumExpanding)
+        self.manualCaption = QLabel(self.centralwidget)
+        self.manualCaption.setObjectName(u"manualCaption")
+        self.manualCaption.setWordWrap(True)
 
-        self.modesLayout.addItem(self.verticalSpacer, 3, 0, 1, 1)
+        self.manualTileLayout.addWidget(self.manualCaption)
 
+
+        self.modesLayout.addLayout(self.manualTileLayout, 0, 1, 1, 1)
+
+        self.singleImgTileLayout = QVBoxLayout()
+        self.singleImgTileLayout.setSpacing(6)
+        self.singleImgTileLayout.setObjectName(u"singleImgTileLayout")
         self.singleImgButton = QPushButton(self.centralwidget)
         self.singleImgButton.setObjectName(u"singleImgButton")
-        sizePolicy2.setHeightForWidth(self.singleImgButton.sizePolicy().hasHeightForWidth())
-        self.singleImgButton.setSizePolicy(sizePolicy2)
+        self.singleImgButton.setMinimumSize(QSize(0, 84))
+        sizePolicy1.setHeightForWidth(self.singleImgButton.sizePolicy().hasHeightForWidth())
+        self.singleImgButton.setSizePolicy(sizePolicy1)
+        self.singleImgButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
-        self.modesLayout.addWidget(self.singleImgButton, 2, 0, 1, 1)
+        self.singleImgTileLayout.addWidget(self.singleImgButton)
 
+        self.singleImgCaption = QLabel(self.centralwidget)
+        self.singleImgCaption.setObjectName(u"singleImgCaption")
+        self.singleImgCaption.setWordWrap(True)
+
+        self.singleImgTileLayout.addWidget(self.singleImgCaption)
+
+
+        self.modesLayout.addLayout(self.singleImgTileLayout, 1, 0, 1, 1)
+
+        self.hybridTileLayout = QVBoxLayout()
+        self.hybridTileLayout.setSpacing(6)
+        self.hybridTileLayout.setObjectName(u"hybridTileLayout")
         self.hybridModeButton = QPushButton(self.centralwidget)
         self.hybridModeButton.setObjectName(u"hybridModeButton")
-        sizePolicy2.setHeightForWidth(self.hybridModeButton.sizePolicy().hasHeightForWidth())
-        self.hybridModeButton.setSizePolicy(sizePolicy2)
+        self.hybridModeButton.setMinimumSize(QSize(0, 84))
+        sizePolicy1.setHeightForWidth(self.hybridModeButton.sizePolicy().hasHeightForWidth())
+        self.hybridModeButton.setSizePolicy(sizePolicy1)
+        self.hybridModeButton.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
-        self.modesLayout.addWidget(self.hybridModeButton, 2, 1, 1, 1)
+        self.hybridTileLayout.addWidget(self.hybridModeButton)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.MinimumExpanding)
+        self.hybridCaption = QLabel(self.centralwidget)
+        self.hybridCaption.setObjectName(u"hybridCaption")
+        self.hybridCaption.setWordWrap(True)
 
-        self.modesLayout.addItem(self.verticalSpacer_2, 3, 1, 1, 1)
+        self.hybridTileLayout.addWidget(self.hybridCaption)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.MinimumExpanding)
 
-        self.modesLayout.addItem(self.verticalSpacer_3, 1, 0, 1, 1)
-
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.modesLayout.addItem(self.verticalSpacer_4, 1, 1, 1, 1)
+        self.modesLayout.addLayout(self.hybridTileLayout, 1, 1, 1, 1)
 
 
         self.mainLayout.addLayout(self.modesLayout)
 
+        self.mainLayout.setStretch(2, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 886, 26))
+        self.menubar.setGeometry(QRect(0, 0, 980, 26))
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuHelp = QMenu(self.menubar)
@@ -212,13 +342,34 @@ class Ui_MainWindow(object):
         self.actionSeleziona_cartella.setText(QCoreApplication.translate("MainWindow", u"Select folder", None))
         self.actionGuida.setText(QCoreApplication.translate("MainWindow", u"Help", None))
         self.actionCrediti.setText(QCoreApplication.translate("MainWindow", u"Credits", None))
+        self.folderIconLabel.setText(QCoreApplication.translate("MainWindow", u"\U0001f4c1", None))
+        self.folderCaption.setText(QCoreApplication.translate("MainWindow", u"Working folder", None))
         self.folderPathName.setText(QCoreApplication.translate("MainWindow", u"Select the working folder", None))
         self.changeFolderButton.setText(QCoreApplication.translate("MainWindow", u"Change folder", None))
         self.updateDataButton.setText(QCoreApplication.translate("MainWindow", u"Refresh analysis", None))
+        self.statCardImages.setProperty(u"accent", QCoreApplication.translate("MainWindow", u"brand", None))
+        self.statValueImages.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.statCaptionImages.setText(QCoreApplication.translate("MainWindow", u"Number of images", None))
+        self.statCardNoData.setProperty(u"accent", QCoreApplication.translate("MainWindow", u"warning", None))
+        self.statValueNoData.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.statCaptionNoData.setText(QCoreApplication.translate("MainWindow", u"Images without a date", None))
+        self.statCardFixedAuto.setProperty(u"accent", QCoreApplication.translate("MainWindow", u"success", None))
+        self.statValueFixedAuto.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.statCaptionFixedAuto.setText(QCoreApplication.translate("MainWindow", u"Fixed automatically", None))
+        self.statCardFixedManual.setProperty(u"accent", QCoreApplication.translate("MainWindow", u"info", None))
+        self.statValueFixedManual.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.statCaptionFixedManual.setText(QCoreApplication.translate("MainWindow", u"Fixed manually", None))
+        self.statCardSkipped.setProperty(u"accent", QCoreApplication.translate("MainWindow", u"neutral", None))
+        self.statValueSkipped.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.statCaptionSkipped.setText(QCoreApplication.translate("MainWindow", u"Skipped", None))
         self.autoButton.setText(QCoreApplication.translate("MainWindow", u"Automatic mode", None))
+        self.autoCaption.setText(QCoreApplication.translate("MainWindow", u"Fix dates for images whose filename already contains a recognizable date.", None))
         self.manualButton.setText(QCoreApplication.translate("MainWindow", u"Manual mode", None))
+        self.manualCaption.setText(QCoreApplication.translate("MainWindow", u"Review every image without a date and set it by hand.", None))
         self.singleImgButton.setText(QCoreApplication.translate("MainWindow", u"Single image mode", None))
+        self.singleImgCaption.setText(QCoreApplication.translate("MainWindow", u"Pick one or more images yourself and set their date.", None))
         self.hybridModeButton.setText(QCoreApplication.translate("MainWindow", u"Hybrid mode", None))
+        self.hybridCaption.setText(QCoreApplication.translate("MainWindow", u"Automatic first, then asks manually for the rest.", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuHelp.setTitle(QCoreApplication.translate("MainWindow", u"Help", None))
     # retranslateUi

@@ -1,7 +1,7 @@
 # controllers/main_controller.py
 
 import threading
-from PySide6.QtWidgets import QMainWindow, QFileDialog, QMessageBox, QTableWidgetItem
+from PySide6.QtWidgets import QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtCore import QTimer, QThread, Signal, QObject
 from ui.ui_MainWindow import Ui_MainWindow
 from controllers.manual_date_dialog import ManualDateDialog, DialogResult
@@ -214,32 +214,13 @@ class MainController(QMainWindow):
 
         dialog.exec()
 
-    # ── Table ───────────────────────────────────────────────────────────────
+    # ── Stat cards ─────────────────────────────────────────────────────────
     def _popola_tabella(self, analisi: dict):
-        tabella = self.ui.statusTable
-
-        labelsHeader = [
-            self.tr("Number of images"),
-            self.tr("Images without a date"),
-            self.tr("Fixed automatically"),
-            self.tr("Fixed manually"),
-            self.tr("Skipped")
-        ]
-        rows = [
-            str(analisi["nrImages"]),
-            str(analisi["img_no_data"]),
-            str(analisi["images_fixed"]),
-            str(analisi["images_manual_fix"]),
-            str(analisi.get("images_skipped", 0))
-        ]
-
-        tabella.setRowCount(len(labelsHeader))
-        tabella.setColumnCount(1)
-        tabella.setHorizontalHeaderLabels([self.tr("Value")])
-        tabella.setVerticalHeaderLabels(labelsHeader)
-
-        for i, valore in enumerate(rows):
-            tabella.setItem(i, 0, QTableWidgetItem(valore))
+        self.ui.statValueImages.setText(str(analisi["nrImages"]))
+        self.ui.statValueNoData.setText(str(analisi["img_no_data"]))
+        self.ui.statValueFixedAuto.setText(str(analisi["images_fixed"]))
+        self.ui.statValueFixedManual.setText(str(analisi["images_manual_fix"]))
+        self.ui.statValueSkipped.setText(str(analisi.get("images_skipped", 0)))
 
 
     # ── Modes ──────────────────────────────────────────────────────────────

@@ -26,9 +26,20 @@ def load_translator(app: QApplication, lang_code: str, base_path: str) -> QTrans
     return None
 
 
+def load_stylesheet(app: QApplication, base_path: str) -> None:
+    """Applies the app-wide modern QSS theme, if present."""
+    qss_path = os.path.join(base_path, "ui", "resources", "style.qss")
+    try:
+        with open(qss_path, "r", encoding="utf-8") as f:
+            app.setStyleSheet(f.read())
+    except OSError:
+        pass
+
+
 def main():
     app = QApplication(sys.argv)
     base_path = get_base_path()
+    load_stylesheet(app, base_path)
     system_lang = QLocale.system().name().split("_")[0]
 
     # Tieni i riferimenti in una lista per evitare il garbage collector
