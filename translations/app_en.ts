@@ -4,89 +4,64 @@
 <context>
     <name>MainController</name>
     <message>
-        <location filename="../controllers/main_controller.py" line="82"/>
+        <location filename="../controllers/main_controller.py" line="93"/>
         <source>Select a folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="96"/>
+        <location filename="../controllers/main_controller.py" line="107"/>
         <source>No folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="97"/>
+        <location filename="../controllers/main_controller.py" line="108"/>
         <source>No folder selected. Do you want to quit?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="105"/>
-        <location filename="../controllers/main_controller.py" line="244"/>
+        <location filename="../controllers/main_controller.py" line="116"/>
+        <location filename="../controllers/main_controller.py" line="236"/>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="105"/>
-        <location filename="../controllers/main_controller.py" line="244"/>
+        <location filename="../controllers/main_controller.py" line="116"/>
+        <location filename="../controllers/main_controller.py" line="236"/>
         <source>Please select a folder first.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="184"/>
+        <location filename="../controllers/main_controller.py" line="173"/>
+        <source>Analysis completed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../controllers/main_controller.py" line="195"/>
         <source>Images modified: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="186"/>
+        <location filename="../controllers/main_controller.py" line="197"/>
         <source>Skipped: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="197"/>
+        <location filename="../controllers/main_controller.py" line="208"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="211"/>
-        <source>Number of images</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../controllers/main_controller.py" line="212"/>
-        <source>Images without a date</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../controllers/main_controller.py" line="213"/>
-        <source>Fixed automatically</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../controllers/main_controller.py" line="214"/>
-        <source>Fixed manually</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../controllers/main_controller.py" line="215"/>
-        <source>Skipped</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../controllers/main_controller.py" line="227"/>
-        <source>Value</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../controllers/main_controller.py" line="250"/>
+        <location filename="../controllers/main_controller.py" line="242"/>
         <source>Select images</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="279"/>
+        <location filename="../controllers/main_controller.py" line="271"/>
         <source>Save error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="280"/>
+        <location filename="../controllers/main_controller.py" line="272"/>
         <source>Unable to save the date for:
 {img_path}
 
@@ -94,12 +69,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="285"/>
+        <location filename="../controllers/main_controller.py" line="277"/>
         <source>Completed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="287"/>
+        <location filename="../controllers/main_controller.py" line="279"/>
         <source>Aborted</source>
         <translation type="unfinished"></translation>
     </message>
@@ -107,63 +82,152 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../ui/MainWindow.ui" line="17"/>
+        <location filename="../ui/MainWindow.ui" line="23"/>
         <source>PhotoClock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainWindow.ui" line="52"/>
+        <location filename="../ui/MainWindow.ui" line="66"/>
+        <source>📁</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="78"/>
+        <source>Working folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="91"/>
         <source>Select the working folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainWindow.ui" line="83"/>
+        <location filename="../ui/MainWindow.ui" line="116"/>
         <source>Change folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainWindow.ui" line="108"/>
+        <location filename="../ui/MainWindow.ui" line="135"/>
         <source>Refresh analysis</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainWindow.ui" line="223"/>
-        <source>Automatic mode</source>
+        <location filename="../ui/MainWindow.ui" line="165"/>
+        <source>brand</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ui/MainWindow.ui" line="186"/>
         <location filename="../ui/MainWindow.ui" line="236"/>
-        <source>Manual mode</source>
+        <location filename="../ui/MainWindow.ui" line="286"/>
+        <location filename="../ui/MainWindow.ui" line="336"/>
+        <location filename="../ui/MainWindow.ui" line="386"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="193"/>
+        <source>Number of images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="215"/>
+        <source>warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="243"/>
+        <source>Images without a date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui/MainWindow.ui" line="265"/>
+        <source>success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="293"/>
+        <source>Fixed automatically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="315"/>
+        <source>info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="343"/>
+        <source>Fixed manually</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="365"/>
+        <source>neutral</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="393"/>
+        <source>Skipped</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="433"/>
+        <source>Automatic mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="440"/>
+        <source>Fix dates for images whose filename already contains a recognizable date.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="472"/>
+        <source>Manual mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="479"/>
+        <source>Review every image without a date and set it by hand.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="511"/>
         <source>Single image mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainWindow.ui" line="278"/>
+        <location filename="../ui/MainWindow.ui" line="518"/>
+        <source>Pick one or more images yourself and set their date.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="550"/>
         <source>Hybrid mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainWindow.ui" line="342"/>
+        <location filename="../ui/MainWindow.ui" line="557"/>
+        <source>Automatic first, then asks manually for the rest.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ui/MainWindow.ui" line="581"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainWindow.ui" line="348"/>
-        <location filename="../ui/MainWindow.ui" line="371"/>
+        <location filename="../ui/MainWindow.ui" line="587"/>
+        <location filename="../ui/MainWindow.ui" line="610"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainWindow.ui" line="363"/>
+        <location filename="../ui/MainWindow.ui" line="602"/>
         <source>Select folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui/MainWindow.ui" line="376"/>
+        <location filename="../ui/MainWindow.ui" line="615"/>
         <source>Credits</source>
         <translation type="unfinished"></translation>
     </message>

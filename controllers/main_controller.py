@@ -170,7 +170,7 @@ class MainController(QMainWindow):
     def _on_finished(self, status: dict):
         self._set_ui_loading(False)
         self._popola_tabella(status["analysis"])
-        self.statusBar().showMessage("Analysis completed.", 3000)
+        self.statusBar().showMessage(self.tr("Analysis completed."), 3000)
 
     def _set_ui_loading(self, loading: bool):
         for btn in [self.ui.updateDataButton, self.ui.changeFolderButton,

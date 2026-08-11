@@ -1,0 +1,419 @@
+/* ============================================================
+   PicMetadata — modern dark theme
+   Palette:
+     background  #15171C
+     surface     #1E212B
+     border      #2B2E3A
+     text        #E5E7EB / #9CA3AF / #6B7280
+     accent      #6366F1 (indigo, lightened for dark bg)
+   ============================================================ */
+
+* {
+    outline: none;
+    font-family: "Segoe UI", "Segoe UI Variable", Arial, sans-serif;
+}
+
+QMainWindow, QDialog {
+    background-color: #15171C;
+}
+
+QWidget {
+    color: #E5E7EB;
+    font-size: 13px;
+}
+
+QLabel {
+    background: transparent;
+}
+
+/* ---------------------------------------------------------------
+   Header bar (folder path + actions)
+--------------------------------------------------------------- */
+QFrame#headerCard {
+    background-color: #1E212B;
+    border: 1px solid #2B2E3A;
+    border-radius: 12px;
+}
+
+QLabel#folderIconLabel {
+    font-size: 18px;
+    color: #818CF8;
+    background: transparent;
+}
+
+QLabel#folderCaption {
+    color: #6B7280;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+QLabel#folderPathName {
+    color: #E5E7EB;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------------
+   Secondary "pill" buttons — change folder / refresh
+--------------------------------------------------------------- */
+QToolButton#changeFolderButton,
+QToolButton#updateDataButton {
+    background-color: #15171C;
+    border: 1px solid #2B2E3A;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 600;
+    color: #E5E7EB;
+}
+QToolButton#changeFolderButton:hover,
+QToolButton#updateDataButton:hover {
+    background-color: #232640;
+    border-color: #4338CA;
+    color: #A5B4FC;
+}
+QToolButton#changeFolderButton:pressed,
+QToolButton#updateDataButton:pressed {
+    background-color: #2D2F55;
+}
+QToolButton#changeFolderButton:disabled,
+QToolButton#updateDataButton:disabled {
+    color: #4B4F5C;
+    background-color: #15171C;
+    border-color: #2B2E3A;
+}
+
+/* ---------------------------------------------------------------
+   Stat cards
+--------------------------------------------------------------- */
+QFrame#statCard {
+    background-color: #1E212B;
+    border: 1px solid #2B2E3A;
+    border-radius: 12px;
+}
+QFrame#statCard[accent="brand"]   { border-left: 4px solid #6366F1; }
+QFrame#statCard[accent="warning"] { border-left: 4px solid #F59E0B; }
+QFrame#statCard[accent="success"] { border-left: 4px solid #22C55E; }
+QFrame#statCard[accent="info"]    { border-left: 4px solid #2DD4BF; }
+QFrame#statCard[accent="neutral"] { border-left: 4px solid #6B7280; }
+
+QLabel#statValueImages, QLabel#statValueNoData, QLabel#statValueFixedAuto,
+QLabel#statValueFixedManual, QLabel#statValueSkipped {
+    font-size: 26px;
+    font-weight: 700;
+    color: #E5E7EB;
+}
+QLabel#statCaptionImages, QLabel#statCaptionNoData, QLabel#statCaptionFixedAuto,
+QLabel#statCaptionFixedManual, QLabel#statCaptionSkipped {
+    font-size: 11px;
+    font-weight: 600;
+    color: #9CA3AF;
+}
+
+/* ---------------------------------------------------------------
+   Mode tiles — big colorful action buttons
+--------------------------------------------------------------- */
+QPushButton#autoButton, QPushButton#manualButton,
+QPushButton#singleImgButton, QPushButton#hybridModeButton {
+    text-align: left;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid #2B2E3A;
+    background-color: #1E212B;
+    font-size: 14px;
+    font-weight: 700;
+    color: #E5E7EB;
+}
+
+QPushButton#autoButton {
+    border-left: 4px solid #6366F1;
+}
+QPushButton#autoButton:hover {
+    background-color: #232640;
+    border-color: #4338CA;
+}
+QPushButton#autoButton:pressed {
+    background-color: #2D2F55;
+}
+
+QPushButton#manualButton {
+    border-left: 4px solid #2DD4BF;
+}
+QPushButton#manualButton:hover {
+    background-color: #12312E;
+    border-color: #115E59;
+}
+QPushButton#manualButton:pressed {
+    background-color: #134E4A;
+}
+
+QPushButton#singleImgButton {
+    border-left: 4px solid #F59E0B;
+}
+QPushButton#singleImgButton:hover {
+    background-color: #302008;
+    border-color: #92400E;
+}
+QPushButton#singleImgButton:pressed {
+    background-color: #451A03;
+}
+
+QPushButton#hybridModeButton {
+    border-left: 4px solid #A78BFA;
+}
+QPushButton#hybridModeButton:hover {
+    background-color: #241D40;
+    border-color: #5B21B6;
+}
+QPushButton#hybridModeButton:pressed {
+    background-color: #2E1D6E;
+}
+
+QPushButton#autoButton:disabled, QPushButton#manualButton:disabled,
+QPushButton#singleImgButton:disabled, QPushButton#hybridModeButton:disabled {
+    color: #4B4F5C;
+    background-color: #191B22;
+    border-color: #2B2E3A;
+}
+
+QLabel#autoCaption, QLabel#manualCaption,
+QLabel#singleImgCaption, QLabel#hybridCaption {
+    font-size: 12px;
+    color: #9CA3AF;
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------------
+   Table (kept for compatibility, styled flat/borderless)
+--------------------------------------------------------------- */
+QTableWidget {
+    background-color: #1E212B;
+    border: 1px solid #2B2E3A;
+    border-radius: 12px;
+    gridline-color: #262935;
+    selection-background-color: #232640;
+    selection-color: #E5E7EB;
+}
+QHeaderView::section {
+    background-color: #191B22;
+    color: #9CA3AF;
+    font-weight: 600;
+    border: none;
+    border-bottom: 1px solid #2B2E3A;
+    padding: 6px 10px;
+}
+QTableWidget::item {
+    padding: 4px 8px;
+}
+
+/* ---------------------------------------------------------------
+   Status bar
+--------------------------------------------------------------- */
+QStatusBar {
+    background-color: #15171C;
+    color: #9CA3AF;
+    border-top: 1px solid #2B2E3A;
+}
+
+/* ---------------------------------------------------------------
+   Menu bar / menus
+--------------------------------------------------------------- */
+QMenuBar {
+    background-color: #1E212B;
+    border-bottom: 1px solid #2B2E3A;
+    padding: 2px 4px;
+}
+QMenuBar::item {
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: transparent;
+}
+QMenuBar::item:selected {
+    background-color: #232640;
+    color: #A5B4FC;
+}
+QMenu {
+    background-color: #1E212B;
+    border: 1px solid #2B2E3A;
+    border-radius: 8px;
+    padding: 4px;
+}
+QMenu::item {
+    padding: 7px 20px 7px 12px;
+    border-radius: 6px;
+    color: #E5E7EB;
+}
+QMenu::item:selected {
+    background-color: #232640;
+    color: #A5B4FC;
+}
+QMenu::separator {
+    height: 1px;
+    background: #2B2E3A;
+    margin: 4px 8px;
+}
+
+/* ---------------------------------------------------------------
+   Generic buttons (dialogs, message boxes)
+--------------------------------------------------------------- */
+QPushButton {
+    background-color: #1E212B;
+    border: 1px solid #2B2E3A;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 600;
+    color: #E5E7EB;
+}
+QPushButton:hover {
+    background-color: #262935;
+    border-color: #383C4A;
+}
+QPushButton:pressed {
+    background-color: #30333F;
+}
+QPushButton:default {
+    background-color: #6366F1;
+    border-color: #6366F1;
+    color: #FFFFFF;
+}
+QPushButton:default:hover {
+    background-color: #4F46E5;
+    border-color: #4F46E5;
+}
+QPushButton:default:pressed {
+    background-color: #4338CA;
+    border-color: #4338CA;
+}
+QPushButton:disabled {
+    color: #4B4F5C;
+    background-color: #191B22;
+    border-color: #2B2E3A;
+}
+
+/* Manual-date dialog specific buttons */
+QPushButton#confirmButton {
+    background-color: #6366F1;
+    border-color: #6366F1;
+    color: #FFFFFF;
+}
+QPushButton#confirmButton:hover {
+    background-color: #4F46E5;
+    border-color: #4F46E5;
+}
+QPushButton#confirmButton:pressed {
+    background-color: #4338CA;
+    border-color: #4338CA;
+}
+QPushButton#abortButton {
+    background-color: #1E212B;
+    border-color: #7F1D1D;
+    color: #F87171;
+}
+QPushButton#abortButton:hover {
+    background-color: #2A1414;
+    border-color: #991B1B;
+}
+QPushButton#abortButton:pressed {
+    background-color: #3A1616;
+}
+QPushButton#skipButton {
+    background-color: #1E212B;
+    border-color: #2B2E3A;
+    color: #9CA3AF;
+}
+QPushButton#skipButton:hover {
+    background-color: #262935;
+    color: #E5E7EB;
+}
+
+/* ---------------------------------------------------------------
+   Manual date dialog — image preview + inputs
+--------------------------------------------------------------- */
+QLabel#imagePreview {
+    background-color: #191B22;
+    border: 1px solid #2B2E3A;
+    border-radius: 12px;
+}
+QLabel#fileNameLabel {
+    color: #E5E7EB;
+    font-size: 13px;
+    font-weight: 600;
+}
+QLabel#dateLabel {
+    color: #9CA3AF;
+    font-weight: 600;
+}
+
+QDateTimeEdit {
+    background-color: #1E212B;
+    border: 1px solid #2B2E3A;
+    border-radius: 8px;
+    padding: 7px 10px;
+    selection-background-color: #6366F1;
+}
+QDateTimeEdit:focus {
+    border: 1px solid #6366F1;
+}
+QDateTimeEdit::drop-down {
+    border: none;
+    width: 22px;
+}
+QCalendarWidget QToolButton {
+    background-color: transparent;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-weight: 600;
+}
+QCalendarWidget QToolButton:hover {
+    background-color: #232640;
+}
+QCalendarWidget QAbstractItemView:enabled {
+    selection-background-color: #6366F1;
+    selection-color: #FFFFFF;
+}
+
+/* ---------------------------------------------------------------
+   Scrollbars — slim, unobtrusive
+--------------------------------------------------------------- */
+QScrollBar:vertical {
+    background: transparent;
+    width: 10px;
+    margin: 2px;
+}
+QScrollBar::handle:vertical {
+    background: #383C4A;
+    border-radius: 5px;
+    min-height: 24px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #4B4F5C;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+QScrollBar:horizontal {
+    background: transparent;
+    height: 10px;
+    margin: 2px;
+}
+QScrollBar::handle:horizontal {
+    background: #383C4A;
+    border-radius: 5px;
+    min-width: 24px;
+}
+QScrollBar::handle:horizontal:hover {
+    background: #4B4F5C;
+}
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+/* ---------------------------------------------------------------
+   Tooltips
+--------------------------------------------------------------- */
+QToolTip {
+    background-color: #E5E7EB;
+    color: #15171C;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
