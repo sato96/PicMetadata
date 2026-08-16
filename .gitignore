@@ -19,6 +19,9 @@ dist/
 build/
 dist/
 
+# internal folder
+internal_script/
+
 # IDE
 .idea/
 .vscode/

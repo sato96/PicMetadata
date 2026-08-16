@@ -1,0 +1,35 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#4338CA"/>
+    </linearGradient>
+    <linearGradient id="lens" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E212B"/>
+      <stop offset="100%" stop-color="#0B0C10"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1024" rx="220" fill="url(#bg)"/>
+
+  <!-- camera body -->
+  <rect x="167" y="360" width="690" height="460" rx="60" fill="#F3F4F6"/>
+  <!-- viewfinder bump -->
+  <rect x="420" y="290" width="184" height="100" rx="24" fill="#F3F4F6"/>
+  <!-- flash dot -->
+  <circle cx="720" cy="430" r="20" fill="#4338CA"/>
+
+  <!-- lens outer -->
+  <circle cx="512" cy="600" r="165" fill="url(#lens)"/>
+  <circle cx="512" cy="600" r="165" fill="none" stroke="#F3F4F6" stroke-width="14"/>
+  <!-- lens inner -->
+  <circle cx="512" cy="600" r="108" fill="#2B2E3A"/>
+
+  <!-- clock face replacing lens glass -->
+  <circle cx="512" cy="600" r="86" fill="#F3F4F6"/>
+  <circle cx="512" cy="600" r="86" fill="none" stroke="#4338CA" stroke-width="8"/>
+  <!-- clock hands -->
+  <line x1="512" y1="600" x2="512" y2="538" stroke="#111827" stroke-width="14" stroke-linecap="round"/>
+  <line x1="512" y1="600" x2="562" y2="618" stroke="#111827" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="512" cy="600" r="12" fill="#4338CA"/>
+</svg>

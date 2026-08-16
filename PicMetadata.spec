@@ -1,10 +1,16 @@
 # -*- mode: python ; coding: utf-8 -*-
 # Build with: pyinstaller PicMetadata.spec
 
+from PyInstaller.utils.hooks import collect_all
+
+# 1. Raccoglie automaticamente TUTTE le DLL (inclusa icuuc.dll) e le dipendenze di PySide6
+pyside_datas, pyside_binaries, pyside_hiddenimports = collect_all('PySide6')
+
 a = Analysis(
     ['main.py'],
     pathex=[],
-    binaries=[],
+    # 2. Aggiunge i binari di PySide6 alla build
+    binaries=[] + pyside_binaries,
     datas=[
         ('ui/MainWindow.ui',            'ui'),
         ('ui/manual_date_dialog.ui',    'ui'),
@@ -13,7 +19,7 @@ a = Analysis(
         ('ui/resources/icons',          'ui/resources/icons'),
         ('translations/app_en.qm',      'translations'),
         ('translations/app_it.qm',      'translations'),
-    ],
+    ] + pyside_datas, # 3. Somma i dati aggiuntivi rilevati
     hiddenimports=[
         'PySide6.QtXml',
         'PySide6.QtCore',
@@ -21,7 +27,7 @@ a = Analysis(
         'PySide6.QtWidgets',
         'PySide6.QtPrintSupport',
         'PIL._tkinter_finder',
-    ],
+    ] + pyside_hiddenimports, # 4. Somma gli import nascosti rilevati
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -45,7 +51,8 @@ exe = EXE(
     disable_windowed_traceback=False,
     target_arch=None,
     codesign_identity=None,
-    entitlements_file=None,
+    entitlement_file=None,
+    icon='ui/resources/icons/app_icon.ico',   # icona dell'eseguibile (Windows Explorer)
 )
 
 coll = COLLECT(
@@ -64,6 +71,7 @@ app = BUNDLE(
     coll,
     name='PicMetadata.app',
     bundle_identifier='com.sato96.picmetadata',
+    icon='ui/resources/icons/app_icon.icns',  # icona del bundle .app (Finder/Dock)
     info_plist={
         'NSHighResolutionCapable': True,
         'LSBackgroundOnly': False,

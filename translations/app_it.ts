@@ -9,29 +9,39 @@
         <translation>Seleziona una cartella</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="107"/>
+        <location filename="../controllers/main_controller.py" line="108"/>
         <source>No folder</source>
         <translation>Nessuna cartella</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="108"/>
+        <location filename="../controllers/main_controller.py" line="109"/>
         <source>No folder selected. Do you want to quit?</source>
         <translation>Nessuna cartella selezionata. Vuoi uscire?</translation>
     </message>
     <message>
         <location filename="../controllers/main_controller.py" line="116"/>
-        <location filename="../controllers/main_controller.py" line="236"/>
+        <source>Yes</source>
+        <translation>Sì</translation>
+    </message>
+    <message>
+        <location filename="../controllers/main_controller.py" line="117"/>
+        <source>No</source>
+        <translation>No</translation>
+    </message>
+    <message>
+        <location filename="../controllers/main_controller.py" line="127"/>
+        <location filename="../controllers/main_controller.py" line="247"/>
         <source>Warning</source>
         <translation>Attenzione</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="116"/>
-        <location filename="../controllers/main_controller.py" line="236"/>
+        <location filename="../controllers/main_controller.py" line="127"/>
+        <location filename="../controllers/main_controller.py" line="247"/>
         <source>Please select a folder first.</source>
         <translation>Seleziona una cartella prima</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="173"/>
+        <location filename="../controllers/main_controller.py" line="184"/>
         <source>Analysis completed.</source>
         <translation>Analisi completata.</translation>
     </message>
@@ -40,17 +50,17 @@
         <translation type="vanished">Immagini modificate: &lt;b&gt;{fixed}&lt;/b&gt;&lt;br&gt;Saltate: &lt;b&gt;{skipped}&lt;/b&gt;</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="195"/>
+        <location filename="../controllers/main_controller.py" line="206"/>
         <source>Images modified: </source>
         <translation>Immagini modificate: </translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="197"/>
+        <location filename="../controllers/main_controller.py" line="208"/>
         <source>Skipped: </source>
         <translation>Immagini saltate: </translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="208"/>
+        <location filename="../controllers/main_controller.py" line="219"/>
         <source>OK</source>
         <translation>Ok</translation>
     </message>
@@ -79,17 +89,17 @@
         <translation type="vanished">Valore</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="242"/>
+        <location filename="../controllers/main_controller.py" line="253"/>
         <source>Select images</source>
         <translation>Seleziona le immagini</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="271"/>
+        <location filename="../controllers/main_controller.py" line="282"/>
         <source>Save error</source>
         <translation>Salva l&apos;errore</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="272"/>
+        <location filename="../controllers/main_controller.py" line="283"/>
         <source>Unable to save the date for:
 {img_path}
 
@@ -100,12 +110,12 @@
 {e}</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="277"/>
+        <location filename="../controllers/main_controller.py" line="288"/>
         <source>Completed</source>
         <translation>Completato</translation>
     </message>
     <message>
-        <location filename="../controllers/main_controller.py" line="279"/>
+        <location filename="../controllers/main_controller.py" line="290"/>
         <source>Aborted</source>
         <translation>Annullato</translation>
     </message>

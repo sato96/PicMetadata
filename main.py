@@ -3,6 +3,7 @@ import sys
 import os
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import QTranslator, QLocale, Qt
+from PySide6.QtGui import QIcon
 from controllers.main_controller import MainController
 
 
@@ -49,10 +50,24 @@ def load_stylesheet(app: QApplication, base_path: str) -> None:
         pass
 
 
+def load_app_icon(app: QApplication, base_path: str) -> None:
+    """
+    Imposta l'icona della finestra/app a runtime (taskbar su Windows,
+    Dock su macOS, taskbar/launcher su Linux). Un solo PNG funziona
+    identicamente su tutti e tre gli OS: è l'icona dell'.exe/.app a
+    richiedere formati separati (.ico/.icns), impostata invece in
+    PicMetadata.spec al momento della build.
+    """
+    icon_path = os.path.join(base_path, "ui", "resources", "icons", "app_icon.png")
+    if os.path.exists(icon_path):
+        app.setWindowIcon(QIcon(icon_path))
+
+
 def main():
     app = QApplication(sys.argv)
     base_path = get_base_path()
     load_stylesheet(app, base_path)
+    load_app_icon(app, base_path)
 
     # Riapplica il tema corretto se l'utente cambia chiaro/scuro
     # a livello di OS mentre l'app è già aperta.

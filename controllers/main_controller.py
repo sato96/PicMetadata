@@ -103,11 +103,22 @@ class MainController(QMainWindow):
                 self.metaDataModifier.folder = self.cartella_corrente
             self._avvia_analisi("analysis")
         elif self.cartella_corrente is None:
-            risposta = QMessageBox.question(
-                self, self.tr("No folder"),
-                self.tr("No folder selected. Do you want to quit?"),
-                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
-            )
+            # Crea la finestra di dialogo
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle(self.tr("No folder"))
+            msg_box.setText(self.tr("No folder selected. Do you want to quit?"))
+            msg_box.setIcon(QMessageBox.Icon.Question)
+
+            # Imposta i pulsanti standard
+            msg_box.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+
+            # Sovrascrive il testo dei pulsanti per farli passare dal tuo sistema di traduzione
+            msg_box.button(QMessageBox.StandardButton.Yes).setText(self.tr("Yes"))
+            msg_box.button(QMessageBox.StandardButton.No).setText(self.tr("No"))
+
+            # Mostra la finestra e cattura la risposta
+            risposta = msg_box.exec()
+
             if risposta == QMessageBox.StandardButton.Yes:
                 self.close()
 
