@@ -2,7 +2,7 @@
 
 import threading
 from PySide6.QtWidgets import QMainWindow, QFileDialog, QMessageBox
-from PySide6.QtCore import QTimer, QThread, Signal, QObject
+from PySide6.QtCore import QTimer, QThread, Signal, QObject, QStandardPaths
 from ui.ui_MainWindow import Ui_MainWindow
 from controllers.manual_date_dialog import ManualDateDialog, DialogResult
 from services.metaDataModifier import metaDataModifier
@@ -76,6 +76,7 @@ class MainController(QMainWindow):
         self.ui.hybridModeButton.clicked.connect(self.avvia_modalita_ibrida)
         self.ui.actionCrediti.triggered.connect(self.credits)
         self.ui.actionGuida.triggered.connect(self.guide)
+        self.ui.actionSeleziona_cartella.triggered.connect(self.seleziona_cartella)
 
     def guide(self):
         from PySide6.QtGui import QDesktopServices
@@ -89,9 +90,13 @@ class MainController(QMainWindow):
 
     # ── Folder ──────────────────────────────────────────────────────────────
     def seleziona_cartella(self):
+        # Se non è ancora stata scelta una cartella in questa sessione, il
+        # selettore parte dalla cartella Immagini dell'utente (o dalla sua
+        # home se Immagini non è disponibile) invece che da una cartella vuota.
+        cartella_iniziale = self.cartella_corrente or self._cartella_default()
         cartella = QFileDialog.getExistingDirectory(
             self, self.tr("Select a folder"),
-            self.cartella_corrente or "",
+            cartella_iniziale,
             QFileDialog.Option.ShowDirsOnly
         )
         if cartella:
@@ -121,6 +126,22 @@ class MainController(QMainWindow):
 
             if risposta == QMessageBox.StandardButton.Yes:
                 self.close()
+
+    @staticmethod
+    def _cartella_default() -> str:
+        """
+        Cartella Immagini dell'utente (calcolata in modo nativo da Qt per
+        Windows, macOS e Linux). Se non disponibile, si torna alla home
+        dell'utente.
+        """
+        cartella = QStandardPaths.writableLocation(
+            QStandardPaths.StandardLocation.PicturesLocation
+        )
+        if not cartella:
+            cartella = QStandardPaths.writableLocation(
+                QStandardPaths.StandardLocation.HomeLocation
+            )
+        return cartella
 
     def aggiorna_analisi(self):
         if not self.cartella_corrente or self.metaDataModifier is None:
