@@ -13,7 +13,8 @@ A desktop tool to fix and manage EXIF date metadata in image files.
 ## Screenshots
 
 <!-- Add screenshots here -->
-
+![Main window](assets/Screenshot1.png)
+![Change metadata window](assets/Screenshot2.png)
 ## Requirements
 
 - Python 3.11+
